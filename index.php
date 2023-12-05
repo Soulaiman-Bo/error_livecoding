@@ -1,4 +1,42 @@
 <?php
+session_start();
+
+    //error_reporting(E_ERROR);
+
+   // func();
+
+
+function errorHandler($type, $msg, $file, $line)
+{
+    $erorr = "<strong style='color: red'>Type:</strong> " . $type . "<br>";
+    $erorr .= "<strong style='color: red'>Message:</strong>: " . $msg  . "<br>";
+    $erorr .= "<strong style='color: red'>File:</strong>: " . $file  . "<br>";
+    $erorr .= "<strong style='color: red'>Line:</strong>: " . $line  . "<br>";
+    echo $erorr;
+}
+
+set_error_handler('errorHandler');
+
+
+    if(isset($_POST['email'])){
+
+
+
+
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['password'] = $_POST['password'];
+
+        //header('location:welcome.php');
+    }
+
+   // if(){$_SERVER['RE']}
+
+    $error = "";
 
 
 
@@ -21,6 +59,7 @@
             <div class="user-box">
                 <input type="email" name="email" required="">
                 <label>Email</label>
+                <span><?php echo $error ?></span>
             </div>
             <div class="user-box">
                 <input type="password" name="password" required="">
